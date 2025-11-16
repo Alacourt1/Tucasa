@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DreamHome - Encuentra tu hogar ideal</title>
+    <title>TuCasa App - Encuentra tu hogar ideal</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
-            --primary: #2A5CAA;
-            --secondary: #F4B400;
-            --dark: #333333;
+            --primary: #1A5276;
+            --secondary: #E67E22;
+            --accent: #27AE60;
+            --dark: #2C3E50;
             --light: #FFFFFF;
-            --gray: #F5F5F5;
-            --success: #34A853;
-            --danger: #EA4335;
+            --gray: #F8F9FA;
+            --success: #27AE60;
+            --danger: #E74C3C;
+            --warning: #F39C12;
         }
         
         * {
@@ -113,6 +115,11 @@
             color: var(--light);
         }
         
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--light);
+        }
+        
         .btn-success {
             background-color: var(--success);
             color: var(--light);
@@ -135,7 +142,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.7)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             height: 500px;
@@ -179,7 +186,7 @@
         }
         
         .search-bar button {
-            background-color: var(--primary);
+            background-color: var(--secondary);
             color: var(--light);
             border: none;
             padding: 0 25px;
@@ -266,7 +273,7 @@
         
         .badge-rent {
             background-color: var(--secondary);
-            color: var(--dark);
+            color: var(--light);
         }
         
         .property-image {
@@ -914,6 +921,115 @@
             font-size: 14px;
         }
         
+        /* Image Upload Styles */
+        .image-upload-container {
+            margin-bottom: 20px;
+        }
+        
+        .image-upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
+        }
+        
+        .image-upload-area:hover {
+            border-color: var(--primary);
+            background-color: #f0f7ff;
+        }
+        
+        .image-upload-area.dragover {
+            border-color: var(--primary);
+            background-color: #e6f2ff;
+        }
+        
+        .upload-icon {
+            font-size: 48px;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+        
+        .image-upload-area p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .upload-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .image-preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .image-preview {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .remove-image {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255,255,255,0.8);
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .property-form-minimal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .property-form-minimal .form-group:nth-child(1),
+        .property-form-minimal .form-group:nth-child(2),
+        .property-form-minimal .form-group:nth-child(3),
+        .property-form-minimal .form-group:nth-child(4),
+        .property-form-minimal .form-group:nth-child(5),
+        .property-form-minimal .form-group:nth-child(6),
+        .property-form-minimal .form-group:nth-child(7),
+        .property-form-minimal .form-group:nth-child(8) {
+            grid-column: span 1;
+        }
+        
+        .property-form-minimal .form-group:nth-child(9) {
+            grid-column: span 2;
+        }
+        
+        .property-form-minimal .image-upload-container {
+            grid-column: span 2;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .navbar {
@@ -973,6 +1089,23 @@
                 right: 0;
                 border-radius: 0;
             }
+            
+            .property-form-minimal {
+                grid-template-columns: 1fr;
+            }
+            
+            .property-form-minimal .form-group:nth-child(1),
+            .property-form-minimal .form-group:nth-child(2),
+            .property-form-minimal .form-group:nth-child(3),
+            .property-form-minimal .form-group:nth-child(4),
+            .property-form-minimal .form-group:nth-child(5),
+            .property-form-minimal .form-group:nth-child(6),
+            .property-form-minimal .form-group:nth-child(7),
+            .property-form-minimal .form-group:nth-child(8),
+            .property-form-minimal .form-group:nth-child(9),
+            .property-form-minimal .image-upload-container {
+                grid-column: span 1;
+            }
         }
     </style>
 </head>
@@ -982,7 +1115,7 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <h1>Dream<span>Home</span></h1>
+                    <h1>TU<span>CASA</span></h1>
                 </div>
                 <ul class="nav-links">
                     <li><a href="#" id="inicioLink">Inicio</a></li>
@@ -1004,11 +1137,11 @@
         <div class="container">
             <div class="hero-content">
                 <h2>Encuentra tu hogar ideal</h2>
-                <p>Miles de propiedades en venta y alquiler para que encuentras el lugar perfecto</p>
+                <p>Miles de propiedades en venta y alquiler para que encuentres el lugar perfecto</p>
                 <div class="search-bar">
                     <input type="text" id="searchInput" placeholder="Buscar por ubicación...">
                     <div class="suggestions" id="suggestions"></div>
-                    <button class="btn btn-primary" id="searchBtn">Buscar</button>
+                    <button class="btn btn-secondary" id="searchBtn">Buscar</button>
                 </div>
             </div>
         </div>
@@ -1018,7 +1151,7 @@
     <section class="dashboard container" id="dashboard">
         <div class="dashboard-header">
             <h2>Mi Panel de Control</h2>
-            <button class="btn btn-primary" id="addPropertyBtn">Agregar Propiedad</button>
+            <button class="btn btn-secondary" id="addPropertyBtn">Agregar Propiedad</button>
         </div>
         
         <div class="dashboard-tabs">
@@ -1100,7 +1233,7 @@
     <div class="modal" id="authModal">
         <div class="modal-content">
             <span class="close-modal" id="closeModal">&times;</span>
-            <h2 class="modal-title">Bienvenido a DreamHome</h2>
+            <h2 class="modal-title">Bienvenido a TUCASA</h2>
             
             <div class="auth-tabs">
                 <div class="auth-tab active" data-tab="login">Iniciar Sesión</div>
@@ -1167,7 +1300,7 @@
             <span class="close-modal" id="closePropertyModal">&times;</span>
             <h2 class="modal-title" id="propertyModalTitle">Agregar Nueva Propiedad</h2>
             
-            <form id="propertyForm">
+            <form id="propertyForm" class="property-form-minimal">
                 <div class="form-group">
                     <label for="propertyTitle">Título</label>
                     <input type="text" id="propertyTitle" placeholder="Ej: Hermosa casa familiar con jardín">
@@ -1221,9 +1354,17 @@
                     <textarea id="propertyDescription" rows="4" placeholder="Describe tu propiedad..."></textarea>
                 </div>
                 
-                <div class="form-group">
-                    <label for="propertyImage">URL de la imagen</label>
-                    <input type="text" id="propertyImage" placeholder="https://ejemplo.com/imagen.jpg">
+                <div class="image-upload-container">
+                    <label>Imágenes de la propiedad</label>
+                    <div class="image-upload-area" id="imageUploadArea">
+                        <div class="upload-icon">📷</div>
+                        <p>Arrastra y suelta imágenes aquí o haz clic para seleccionar</p>
+                        <button type="button" class="upload-btn" id="uploadBtn">Seleccionar imágenes</button>
+                        <input type="file" id="propertyImages" multiple accept="image/*" style="display: none;">
+                    </div>
+                    <div class="image-preview-container" id="imagePreviewContainer">
+                        <!-- Las previsualizaciones de imágenes se agregarán aquí -->
+                    </div>
                 </div>
                 
                 <button type="submit" class="btn btn-primary btn-full" id="savePropertyBtn">Guardar Propiedad</button>
@@ -1260,7 +1401,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>DreamHome</h3>
+                    <h3>TUCASA</h3>
                     <p>Encuentra la propiedad de tus sueños con nosotros. Miles de opciones en venta y alquiler.</p>
                 </div>
                 <div class="footer-column">
@@ -1275,7 +1416,7 @@
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <ul class="footer-links">
-                        <li>Email: info@dreamhome.com</li>
+                        <li>Email: info@tucasa.com</li>
                         <li>Teléfono: +1 234 567 890</li>
                         <li>Dirección: Calle Principal 123</li>
                     </ul>
@@ -1291,7 +1432,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 DreamHome. Todos los derechos reservados.</p>
+                <p>&copy; 2023 TUCASA. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -1302,11 +1443,11 @@
         // ============================
         
         // Cargar datos del localStorage o inicializar con datos de ejemplo
-        let users = JSON.parse(localStorage.getItem('dreamhome_users')) || [];
-        let properties = JSON.parse(localStorage.getItem('dreamhome_properties')) || [];
-        let propertyViews = JSON.parse(localStorage.getItem('dreamhome_property_views')) || {};
-        let currentUser = JSON.parse(localStorage.getItem('dreamhome_current_user')) || null;
-        let conversations = JSON.parse(localStorage.getItem('dreamhome_conversations')) || {};
+        let users = JSON.parse(localStorage.getItem('tucasa_users')) || [];
+        let properties = JSON.parse(localStorage.getItem('tucasa_properties')) || [];
+        let propertyViews = JSON.parse(localStorage.getItem('tucasa_property_views')) || {};
+        let currentUser = JSON.parse(localStorage.getItem('tucasa_current_user')) || null;
+        let conversations = JSON.parse(localStorage.getItem('tucasa_conversations')) || {};
         
         // Datos de ejemplo si no hay datos en localStorage
         if (users.length === 0) {
@@ -1319,7 +1460,7 @@
                     password: 'password123',
                     registrationDate: new Date().toISOString(),
                     bio: 'Especialista en propiedades residenciales con más de 10 años de experiencia. Me encanta ayudar a las familias a encontrar su hogar ideal.',
-                    company: 'Inmobiliaria DreamHome'
+                    company: 'Inmobiliaria TUCASA'
                 },
                 {
                     id: 'user_2',
@@ -1332,7 +1473,7 @@
                     company: 'Rodríguez Inversiones'
                 }
             ];
-            localStorage.setItem('dreamhome_users', JSON.stringify(users));
+            localStorage.setItem('tucasa_users', JSON.stringify(users));
         }
         
         if (properties.length === 0) {
@@ -1398,7 +1539,7 @@
                     date: new Date().toISOString()
                 }
             ];
-            localStorage.setItem('dreamhome_properties', JSON.stringify(properties));
+            localStorage.setItem('tucasa_properties', JSON.stringify(properties));
         }
         
         // Lista de ciudades de Argentina para el autocompletado
@@ -1417,6 +1558,9 @@
         // Variables para el sistema de chat
         let currentChatWith = null;
         let currentConversationId = null;
+        
+        // Variables para el sistema de imágenes
+        let propertyImages = [];
         
         // ============================
         // FUNCIONES PRINCIPALES
@@ -1820,8 +1964,8 @@
                     datasets: [{
                         label: 'Vistas por propiedad',
                         data: viewCounts,
-                        backgroundColor: '#2A5CAA',
-                        borderColor: '#1E4A8A',
+                        backgroundColor: '#1A5276',
+                        borderColor: '#154360',
                         borderWidth: 1
                     }]
                 },
@@ -1863,8 +2007,163 @@
                 });
                 
                 // Guardar en localStorage
-                localStorage.setItem('dreamhome_property_views', JSON.stringify(propertyViews));
+                localStorage.setItem('tucasa_property_views', JSON.stringify(propertyViews));
             }
+        }
+        
+        // ============================
+        // SISTEMA DE IMÁGENES
+        // ============================
+        
+        // Configurar el sistema de carga de imágenes
+        function setupImageUpload() {
+            const imageUploadArea = document.getElementById('imageUploadArea');
+            const propertyImagesInput = document.getElementById('propertyImages');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            
+            if (!imageUploadArea || !propertyImagesInput || !uploadBtn || !imagePreviewContainer) return;
+            
+            // Abrir selector de archivos al hacer clic en el área o botón
+            imageUploadArea.addEventListener('click', function() {
+                propertyImagesInput.click();
+            });
+            
+            uploadBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                propertyImagesInput.click();
+            });
+            
+            // Manejar la selección de archivos
+            propertyImagesInput.addEventListener('change', function() {
+                handleImageSelection(this.files);
+            });
+            
+            // Configurar arrastrar y soltar
+            imageUploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('dragover');
+            });
+            
+            imageUploadArea.addEventListener('dragleave', function() {
+                this.classList.remove('dragover');
+            });
+            
+            imageUploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('dragover');
+                
+                if (e.dataTransfer.files.length) {
+                    handleImageSelection(e.dataTransfer.files);
+                }
+            });
+        }
+        
+        // Manejar la selección de imágenes
+        function handleImageSelection(files) {
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                
+                // Verificar que sea una imagen
+                if (!file.type.match('image.*')) {
+                    showNotification('Solo se permiten archivos de imagen', 'error');
+                    continue;
+                }
+                
+                // Crear objeto URL para previsualización
+                const imageUrl = URL.createObjectURL(file);
+                
+                // Agregar a la lista de imágenes
+                propertyImages.push({
+                    file: file,
+                    url: imageUrl
+                });
+                
+                // Crear elemento de previsualización
+                const imagePreview = document.createElement('div');
+                imagePreview.className = 'image-preview';
+                imagePreview.innerHTML = `
+                    <img src="${imageUrl}" alt="Previsualización">
+                    <button type="button" class="remove-image" data-index="${propertyImages.length - 1}">×</button>
+                `;
+                
+                imagePreviewContainer.appendChild(imagePreview);
+            }
+            
+            // Agregar event listeners para eliminar imágenes
+            document.querySelectorAll('.remove-image').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeImage(index);
+                });
+            });
+        }
+        
+        // Eliminar imagen de la lista
+        function removeImage(index) {
+            // Liberar URL del objeto
+            URL.revokeObjectURL(propertyImages[index].url);
+            
+            // Eliminar de la lista
+            propertyImages.splice(index, 1);
+            
+            // Actualizar previsualizaciones
+            updateImagePreviews();
+        }
+        
+        // Actualizar previsualizaciones de imágenes
+        function updateImagePreviews() {
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            imagePreviewContainer.innerHTML = '';
+            
+            propertyImages.forEach((image, index) => {
+                const imagePreview = document.createElement('div');
+                imagePreview.className = 'image-preview';
+                imagePreview.innerHTML = `
+                    <img src="${image.url}" alt="Previsualización">
+                    <button type="button" class="remove-image" data-index="${index}">×</button>
+                `;
+                
+                imagePreviewContainer.appendChild(imagePreview);
+            });
+            
+            // Agregar event listeners para eliminar imágenes
+            document.querySelectorAll('.remove-image').forEach(button => {
+                button.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeImage(index);
+                });
+            });
+        }
+        
+        // Convertir imágenes a base64 para almacenamiento
+        function convertImagesToBase64() {
+            return new Promise((resolve) => {
+                if (propertyImages.length === 0) {
+                    resolve([]);
+                    return;
+                }
+                
+                const base64Images = [];
+                let processed = 0;
+                
+                propertyImages.forEach((image, index) => {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        base64Images[index] = e.target.result;
+                        processed++;
+                        
+                        if (processed === propertyImages.length) {
+                            resolve(base64Images);
+                        }
+                    };
+                    
+                    reader.readAsDataURL(image.file);
+                });
+            });
         }
         
         // ============================
@@ -1884,7 +2183,7 @@
                 <div class="profile-avatar">${user.name.charAt(0)}</div>
                 <div class="profile-info">
                     <h2>${user.name}</h2>
-                    <p>${user.company || 'Usuario de DreamHome'}</p>
+                    <p>${user.company || 'Usuario de TUCASA'}</p>
                     <p>${user.bio || 'Este usuario aún no ha completado su biografía.'}</p>
                     <p><strong>Email:</strong> ${user.email}</p>
                     <p><strong>Teléfono:</strong> ${user.phone}</p>
@@ -2127,7 +2426,7 @@
             conversations[currentConversationId].messages.push(message);
             
             // Guardar en localStorage
-            localStorage.setItem('dreamhome_conversations', JSON.stringify(conversations));
+            localStorage.setItem('tucasa_conversations', JSON.stringify(conversations));
             
             // Actualizar interfaz
             appendMessage(message);
@@ -2357,7 +2656,7 @@
             
             if (user) {
                 currentUser = user;
-                localStorage.setItem('dreamhome_current_user', JSON.stringify(currentUser));
+                localStorage.setItem('tucasa_current_user', JSON.stringify(currentUser));
                 document.getElementById('authModal').style.display = 'none';
                 updateUIForLoggedInUser();
                 showNotification('¡Bienvenido de nuevo!', 'success');
@@ -2401,10 +2700,10 @@
             };
             
             users.push(newUser);
-            localStorage.setItem('dreamhome_users', JSON.stringify(users));
+            localStorage.setItem('tucasa_users', JSON.stringify(users));
             
             currentUser = newUser;
-            localStorage.setItem('dreamhome_current_user', JSON.stringify(currentUser));
+            localStorage.setItem('tucasa_current_user', JSON.stringify(currentUser));
             
             document.getElementById('authModal').style.display = 'none';
             updateUIForLoggedInUser();
@@ -2427,12 +2726,12 @@
             let existingUser = users.find(u => u.email === user.email);
             if (!existingUser) {
                 users.push(user);
-                localStorage.setItem('dreamhome_users', JSON.stringify(users));
+                localStorage.setItem('tucasa_users', JSON.stringify(users));
                 existingUser = user;
             }
             
             currentUser = existingUser;
-            localStorage.setItem('dreamhome_current_user', JSON.stringify(currentUser));
+            localStorage.setItem('tucasa_current_user', JSON.stringify(currentUser));
             document.getElementById('authModal').style.display = 'none';
             updateUIForLoggedInUser();
             showNotification('¡Autenticación exitosa!', 'success');
@@ -2458,6 +2757,8 @@
             addPropertyBtn.addEventListener('click', function() {
                 document.getElementById('propertyModalTitle').textContent = 'Agregar Nueva Propiedad';
                 propertyForm.reset();
+                propertyImages = [];
+                document.getElementById('imagePreviewContainer').innerHTML = '';
                 propertyModal.style.display = 'flex';
             });
             
@@ -2496,13 +2797,19 @@
                 document.getElementById('propertyBathrooms').value = property.bathrooms;
                 document.getElementById('propertyArea').value = property.area.replace(/\D/g, '');
                 document.getElementById('propertyDescription').value = property.description;
-                document.getElementById('propertyImage').value = property.image;
+                
+                // Para la edición, por simplicidad, mantenemos la imagen existente
+                // En una implementación real, podrías permitir reemplazar o agregar imágenes
+                propertyImages = [];
+                document.getElementById('imagePreviewContainer').innerHTML = '';
                 
                 // Guardar el ID de la propiedad que se está editando
                 propertyForm.setAttribute('data-edit-id', property.id);
             } else {
                 document.getElementById('propertyModalTitle').textContent = 'Agregar Nueva Propiedad';
                 propertyForm.reset();
+                propertyImages = [];
+                document.getElementById('imagePreviewContainer').innerHTML = '';
                 propertyForm.removeAttribute('data-edit-id');
             }
             
@@ -2510,7 +2817,7 @@
         }
         
         // Guardar propiedad (nueva o editada)
-        function saveProperty() {
+        async function saveProperty() {
             const propertyForm = document.getElementById('propertyForm');
             const editId = propertyForm.getAttribute('data-edit-id');
             
@@ -2523,11 +2830,20 @@
             const bathrooms = document.getElementById('propertyBathrooms').value;
             const area = document.getElementById('propertyArea').value;
             const description = document.getElementById('propertyDescription').value;
-            const image = document.getElementById('propertyImage').value;
             
-            if (!title || !price || !address || !bedrooms || !bathrooms || !area || !description || !image) {
+            if (!title || !price || !address || !bedrooms || !bathrooms || !area || !description) {
                 showNotification('Por favor, completa todos los campos obligatorios', 'error');
                 return;
+            }
+            
+            // Si no hay imágenes seleccionadas, usar una imagen por defecto
+            let imageUrl = "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+            
+            // Si hay imágenes, usar la primera
+            if (propertyImages.length > 0) {
+                // En una implementación real, aquí subirías las imágenes a un servidor
+                // Para este ejemplo, usamos la primera imagen como representativa
+                imageUrl = propertyImages[0].url;
             }
             
             const propertyData = {
@@ -2540,7 +2856,7 @@
                 bathrooms: parseInt(bathrooms),
                 area: area + ' m²',
                 description: description,
-                image: image,
+                image: imageUrl,
                 ownerId: currentUser.id,
                 date: new Date().toISOString()
             };
@@ -2559,8 +2875,14 @@
                 showNotification('Propiedad agregada exitosamente', 'success');
             }
             
-            localStorage.setItem('dreamhome_properties', JSON.stringify(properties));
+            localStorage.setItem('tucasa_properties', JSON.stringify(properties));
             document.getElementById('propertyModal').style.display = 'none';
+            
+            // Limpiar imágenes después de guardar
+            propertyImages.forEach(image => {
+                URL.revokeObjectURL(image.url);
+            });
+            propertyImages = [];
             
             // Actualizar las vistas
             loadAllProperties();
@@ -2585,7 +2907,7 @@
         function deleteProperty(propertyId) {
             if (confirm('¿Estás seguro de que quieres eliminar esta propiedad?')) {
                 properties = properties.filter(p => p.id !== propertyId);
-                localStorage.setItem('dreamhome_properties', JSON.stringify(properties));
+                localStorage.setItem('tucasa_properties', JSON.stringify(properties));
                 
                 // Actualizar las vistas
                 loadAllProperties();
@@ -2645,7 +2967,7 @@
             
             authButtons.innerHTML = `
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #2A5CAA; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background-color: #1A5276; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
                         ${currentUser.name.charAt(0)}
                     </div>
                     <span>Hola, ${currentUser.name.split(' ')[0]}</span>
@@ -2682,7 +3004,7 @@
             
             document.getElementById('logoutBtn').addEventListener('click', function() {
                 currentUser = null;
-                localStorage.removeItem('dreamhome_current_user');
+                localStorage.removeItem('tucasa_current_user');
                 
                 // Restaurar la UI
                 if (venderLink) {
@@ -2735,9 +3057,9 @@
             notification.style.transition = 'transform 0.3s ease';
             
             if (type === 'success') {
-                notification.style.backgroundColor = '#34A853';
+                notification.style.backgroundColor = '#27AE60';
             } else {
-                notification.style.backgroundColor = '#EA4335';
+                notification.style.backgroundColor = '#E74C3C';
             }
             
             notification.textContent = message;
@@ -2771,6 +3093,9 @@
             
             // Configurar sistema de chat
             setupChatSystem();
+            
+            // Configurar sistema de carga de imágenes
+            setupImageUpload();
             
             // Cargar todas las propiedades
             loadAllProperties();
@@ -2857,10 +3182,10 @@
             }
             
             // Actualizar propertyViews desde localStorage
-            propertyViews = JSON.parse(localStorage.getItem('dreamhome_property_views')) || {};
+            propertyViews = JSON.parse(localStorage.getItem('tucasa_property_views')) || {};
             
             // Actualizar conversations desde localStorage
-            conversations = JSON.parse(localStorage.getItem('dreamhome_conversations')) || {};
+            conversations = JSON.parse(localStorage.getItem('tucasa_conversations')) || {};
         });
     </script>
 </body>
